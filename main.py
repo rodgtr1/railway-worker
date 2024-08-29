@@ -6,6 +6,10 @@ import os
 
 app = FastAPI()
 
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 @app.get("/")
 async def root():
     return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
