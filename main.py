@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse
-from rembg import remove
 import os
+from rembg import remove
 
 app = FastAPI()
 
