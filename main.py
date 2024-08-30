@@ -16,6 +16,7 @@ async def root():
 
 @app.post("/removeBackground")
 async def removeBackground(thumbnail: UploadFile = File(...)):
+
     logger.info(f"processing ${thumbnail.filename}")
     try:
         # Ensure the images directory exists
