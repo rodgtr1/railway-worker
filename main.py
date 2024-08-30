@@ -15,20 +15,20 @@ async def root():
     return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
 
 @app.post("/removeBackground")
-async def removeBackground(file: UploadFile = File(...)):
-    logger.info(f"processing ${file.filename}")
+async def removeBackground(thumbnail: UploadFile = File(...)):
+    logger.info(f"processing ${thumbnail.filename}")
     try:
         # Ensure the images directory exists
         os.makedirs('images', exist_ok=True)
         logger.info("images folder created")
 
-        name = file.filename
+        name = thumbnail.filename
         input_path = os.path.join('images', name)
         output_path = os.path.join('images', name + '_bgremoved.png')
 
         # Save the uploaded file content to a temporary file
         with open(input_path, 'wb') as f:
-            f.write(await file.read())
+            f.write(await thumbnail.read())
             logger.info("original image saved")
 
         # Process the file to remove the background
